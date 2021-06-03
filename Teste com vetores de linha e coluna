@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main(){
+
+int L, C, n=5;
+int x[n][n];
+
+printf("\n\n1\n\n");
+
+for ( L=0;  L<n;  L++){
+
+for ( C=0;  C<n;  C++){
+x[L][C]= L;
+printf("%2d", x[L][C]);
+}
+printf("\n");
+}
+printf("\n\n2\n\n");
+
+for ( L=0;  L<n;  L++){
+
+for ( C=0;  C<n;  C++){
+x[L][C]= L;
+printf("%2d", x[L][C]);
+}
+printf("\n");
+}
+printf("\n\n3\n\n");
+
+for ( L=0;  L<n;  L++){
+
+for ( C=0;  C<n;  C++){
+x[L][C]= L+C;
+printf("%2d", x[L][C]);
+}
+printf("\n");
+}
+printf("\n\n4\n\n");
+
+for ( L=0;  L<n;  L++){
+
+for ( C=0;  C<n;  C++){
+x[L][C]= L*C;
+printf("%3d", x[L][C]);
+}
+printf("\n");
+}
+printf("\n\n5\n\n");
+
+for ( L=0;  L<n;  L++){
+
+for ( C=0;  C<n;  C++){
+x[L][C]= L+C - n + 1;
+printf("%3d", x[L][C]);
+}
+printf("\n");
+}
+printf("\n\n6\n\n");
+
+for ( L=0;  L<n;  L++){
+
+for ( C=0;  C<n;  C++){
+x[L][C]= rand() % 10;
+printf("%3d", x[L][C]);
+}
+printf("\n");
+}
+int contador=1;
+printf("\n\n7\n\n");
+
+for ( L=0;  L<n;  L++){
+
+for ( C=0;  C<n;  C++){
+x[L][C]= contador++;
+printf("%3d", x[L][C]);
+}
+printf("\n");
+}
+
+return 0;
+}
