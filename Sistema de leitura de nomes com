@@ -1,0 +1,44 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+int main()
+{
+  
+   //STRING 
+   int i;
+   char palavra[10] = {'U', 'N', 'I', 'N', 'O', 'V', 'E'}; 
+   
+   char curso[10] = {"Computacao"};
+   
+   char nome[50], sobrenome[50],nomecompleto[100];
+   
+   printf("Digite o seu primeiro nome: ");
+   scanf("%s", nome);
+   
+  
+   printf("\nDigite o seu Sobrenome: %s", sobrenome);
+   scanf("%s",sobrenome);
+   
+   // strlen () = Quantidade de caracteres.
+   // strcat () = Concatenar caracteres.
+   // strcpy () = Copiar caracteres.
+   // strcmp () = Comparar cracteres.
+    
+   for (i=0; i<strlen(nome); i++){
+    printf("%c", nome[i]);       
+   }
+   
+   strcpy(nomecompleto, nome);
+   strcat(nomecompleto, " ");
+   strcat(nomecompleto,sobrenome);
+   
+   if(strcmp(nome, "Daniel")==0){
+     printf("\nBem-vindo Daniel, quanto tempo?");
+}else{
+printf(",você conhece o Daniel?");
+}
+return 0;
+}
