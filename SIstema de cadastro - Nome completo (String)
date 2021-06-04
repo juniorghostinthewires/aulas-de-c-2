@@ -1,0 +1,32 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+int main()
+{
+  
+   //STRING 
+   int i;
+   char palavra[10] = {'U', 'N', 'I', 'N', 'O', 'V', 'E'}; 
+   
+   char curso[10] = {"Computacao"};
+   
+   char nome[50], sobrenome[50],nomecompleto[100];
+   
+   printf("Digite o seu nome completo: ");
+   //scanf("%s", nomecompleto);
+   
+   gets(nomecompleto);
+   fflush(stdin);
+   
+   printf("\nNome= %s", nomecompleto);
+   
+    
+    //printf("Universidade = %s\n", palavra);
+    //printf("Curso = %s\n", curso);
+    //printF("%c\t", curso[i])    
+
+    return 0;
+}
