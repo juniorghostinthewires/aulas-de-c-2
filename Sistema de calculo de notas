@@ -1,0 +1,121 @@
+#include<stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define L 10
+#define C 4
+
+int main(){
+    
+    int i, j;
+    float notas[L][C]={}, bonus=0, media_aprovacao;
+
+    srand(time(NULL));
+    printf("Quantos pontos bonus deseja adicionar aos alunos (AV1): ");
+    scanf("%f", &bonus);
+    printf("Informe a media de aprovação dos alunos: ");
+    scanf("%f", &media_aprovacao);
+    printf("\nCOD\t\tRA\t\t\t AV1\t\t AV2\t\tMedia\t\tStatus\n");
+    for(i=0 ; i<L ; i++){            //    Cada linha = dados de um Alunos
+        printf("%02d\t\t", i+1);
+        for(j=0 ; j<C ; j++){        //    Cada coluna = Dados de todos alunos
+            //    RA
+            if( j==0 )
+                notas[i][j] = 210000 + (rand() % 10000); 
+            
+            //    AV1
+            if( j==1 )
+                notas[i][1] = (rand() % 11) + bonus;
+            
+            if( notas[i][1] > 10.0 )
+                notas[i][1] = 10.0;
+
+            //    AV1
+            if( j==2 )
+                notas[i][2] = rand() % 11;
+            
+            //    MEDIA
+            if( j==3 )
+                notas[i][j] = (notas[i][1] + notas[i][2]) / 2;
+
+            if( j==0 )
+                printf("%4.0f\t\t", notas[i][j]);
+            else
+                printf("%4.1f\t\t", notas[i][j]);
+
+            if( j==3 ){
+                if( notas[i][3] >= media_aprovacao )
+                    printf("A");
+                else
+                    printf("R");
+            }
+        }
+        printf("\n");
+    }
+
+    int add_bonus, encontrado=0;
+    float ra_escolhido, ponto_bonus;
+
+    printf("\n\nDeseja adicionar bonus na AV1 de um aluno especifico?\nNÃO ( 0 )    SIM ( 1 ): ");
+    scanf("%d", &add_bonus);
+    
+    if( add_bonus == 1 ){
+        printf("Informe o RA do aluno: ");
+        scanf("%f", &ra_escolhido);
+
+        for( i=0; i<L; i++){
+            if( notas[i][0] == ra_escolhido ){
+                printf("Nota atual (AV1): %.1f\n", notas[i][1]);
+                printf("Informe o valor de bonus: ");
+                scanf("%f", &ponto_bonus);
+                notas[i][1] += ponto_bonus;
+
+                if( notas[i][1] > 10.0 )
+                    notas[i][1] = 10.0;
+                
+                printf("\nNota adicionada.\n");
+
+            }
+        }
+
+
+
+    printf("\nCOD\t\tRA\t\t\t AV1\t\t AV2\t\tMedia\t\tStatus\n");
+    for(i=0 ; i<L ; i++){            //    Cada linha = dados de um Alunos
+        printf("%02d\t\t", i+1);
+        for(j=0 ; j<C ; j++){        //    Cada coluna = Dados de todos alunos
+            //    MEDIA RECALCULADA
+            if( j==3 )
+                notas[i][j] = (notas[i][1] + notas[i][2]) / 2;
+
+            //    IMPRESSAO
+            if( notas[i][0] == ra_escolhido)
+                printf("\033[5;33;40m");
+
+            if( j==0 )
+                printf("%4.0f\t\t", notas[i][j]);
+            else
+                printf("%4.1f\t\t", notas[i][j]);
+
+            if( j==3 ){
+                if( notas[i][3] >= media_aprovacao )
+                    printf("A");
+                else
+                    printf("R");
+            }
+
+            if( notas[i][0] == ra_escolhido)
+                printf("\033[0m");
+        }
+        printf("\n");
+    }
+
+
+    }else{
+
+        printf("\nPrograma finalizado.\n");
+    }
+    
+    return 0;
+}
+
+
